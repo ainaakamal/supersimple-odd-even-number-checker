@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--Ensures the webpage is responsive by setting the viewport to the device's width.-->
+    <title>Odd or Even Number Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="number"] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Odd or Even Number Checker</h1>
+        <input type="number" id="numberInput" placeholder="Enter a number">  <!--An input field for entering a number-->
+        <button onclick="checkNumber()">Check</button>
+        <div id="result"></div>
+        <div class="tips">
+            Tips: If a number is divided by 2 and leaves the remainder as 0, then it is even; otherwise, it is an odd number.
+        </div>
+    </div>
+    <script>
+        function checkNumber() {
+            const number = document.getElementById('numberInput').value;          //Gets the value from the input field
+            const resultDiv = document.getElementById('result');
+            
+            if (number === '') {                                    //Checks if the input is empty and displays a message if it is
+                resultDiv.innerHTML = 'Please enter a number';
+                return;
+            }
+            
+            const parsedNumber = parseInt(number, 10);
+            
+            if (isNaN(parsedNumber)) {                    //Checks if the parsed value is not a number and displays a message if it's invalid
+                resultDiv.innerHTML = 'Please enter a valid number';
+                return;
+            }
+            
+            if (parsedNumber % 2 === 0) {     //If a number is divided by 2 and leaves the remainder as 0, then it is even; otherwise, it is an odd number
+                resultDiv.innerHTML = 'The entered number is an even number';
+            } else {
+                resultDiv.innerHTML = 'The entered number is an odd number';
+            }
+        }
+    </script>
+</body>
+</html>
